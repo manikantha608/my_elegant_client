@@ -10,7 +10,7 @@ const Footer = () => {
         color: "#fff",
         py: 4,
         px: 2,
-      
+        mt:"70px",
     
         width: "100%",
       }}
