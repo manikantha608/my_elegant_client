@@ -50,6 +50,7 @@ const Userdashboard = () => {
   };
 
   return (
+    <>
     <Box>
       <AppBar position="sticky" sx={{ background: "rgb(228, 45, 64)" }}>
         <Toolbar>
@@ -124,8 +125,10 @@ const Userdashboard = () => {
           )}
         </Grid>
       </Container>
-      <Footer />
+      
     </Box>
+    <Footer />
+    </>
   );
 };
 
