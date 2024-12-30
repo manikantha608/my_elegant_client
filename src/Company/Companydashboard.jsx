@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import {
   AppBar,
   Toolbar,
@@ -20,6 +20,7 @@ import { deepPurple } from "@mui/material/colors";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Footer from "../components/footer";
+import company from "../assets/company.png"
 
 const CompanyDashboard = () => {
   const theme = useTheme();
@@ -267,7 +268,14 @@ const CompanyDashboard = () => {
           padding: 4,
         }}
       >
-        <Typography variant="h4" sx={{ mb: 4, animation: "colorChange 3s infinite", }}>
+        <Box>
+          <img src={company}/>
+        </Box>
+        <Typography variant="h4"
+        fontWeight="bold"
+        margin="15px"
+        //  sx={{ mb: 4, animation: "colorChange 3s infinite", }}
+         >
           Welcome to the Company Dashboard
         </Typography>
         <style>
@@ -287,7 +295,7 @@ const CompanyDashboard = () => {
               <Grid item xs={12} sm={6} md={4} key={job._id}>
                 <Card
                   sx={{
-                    backgroundColor:"rgb(239, 222, 136)",
+                    backgroundColor:"#a5cf5d",
                     transition: "transform 0.3s, box-shadow 0.3s",
                     "&:hover": {
                       transform: "scale(1.05)",
@@ -299,7 +307,7 @@ const CompanyDashboard = () => {
                   onClick={() => handleCardClick(job._id)}
                 >
                   <CardContent>
-                    <Typography variant="h6" gutterBottom>
+                    <Typography variant="h6" fontWeight="bold" gutterBottom>
                       {job.title}
                     </Typography>
                     <Typography variant="body1">

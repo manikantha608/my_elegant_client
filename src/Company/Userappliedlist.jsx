@@ -143,7 +143,8 @@ const AppliedUser = () => {
       >
         <Typography
           variant={isMobile ? "h5" : "h4"}
-          sx={{ mb: 4, fontWeight: "bold", animation: "colorChange 3s infinite", }}
+          fontWeight="bold" margin="15px"
+          // sx={{ mb: 4, fontWeight: "bold", animation: "colorChange 3s infinite", }}
         >
           Users Applied for the Job
         </Typography>
@@ -165,7 +166,7 @@ const AppliedUser = () => {
               <Grid item xs={12} sm={6} md={4} key={user.id}>
                 <Card
                   sx={{
-                    background: "linear-gradient(to bottom right, rgb(245, 207, 104), rgb(231, 233, 237))",
+                    background: "#a5cf5d",
                     borderRadius: "16px",
                     boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
                     transition: "transform 0.3s, box-shadow 0.3s",
