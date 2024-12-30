@@ -103,7 +103,7 @@ const Userlistedjobs = () => {
           },
         }
       );
-      console.log(response)
+      console.log(response);
 
       setApplySuccess(true);
       setTimeout(() => setApplySuccess(false), 3000);
@@ -175,7 +175,10 @@ const Userlistedjobs = () => {
           variant="h4"
           gutterBottom
           textAlign="center"
-          sx={{ animation: "colorChange 3s infinite" }}
+          borderBottom="2px solid"
+          fontWeight="bold"
+          marginBottom="20px"
+          // sx={{ animation: "colorChange 3s infinite" }}
         >
           {category} Jobs
         </Typography>
@@ -206,14 +209,22 @@ const Userlistedjobs = () => {
                   item
                   xs={12}
                   sm={6}
-                  md={4}
+                  md={5}
                   key={`${dataIndex}-${jobIndex}`}
                 >
                   <Card
                     onClick={() => handleJobClick(job)}
                     sx={{
                       cursor: "pointer",
-                      backgroundColor: "#dab6ff",
+                      width: {
+                        xs: "100%", // Full width on extra-small devices
+                        sm: "90%", // 90% of container width on small devices
+                        md: "385px", // Fixed width on medium and larger devices
+                      },
+                      height: {
+                        xs: "auto", // Adjust height based on content on extra-small devices
+                        md: "300px", // Fixed height on medium and larger devices
+                      },
                       transition: "transform 0.3s, box-shadow 0.3s",
                       "&:hover": {
                         transform: "scale(1.05)",
@@ -222,19 +233,89 @@ const Userlistedjobs = () => {
                       },
                     }}
                   >
-                    <CardContent>
+                    <CardContent
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "10px",
+                      }}
+                    >
                       <Typography variant="h4" gutterBottom>
-                        {job.title}
+                        {
+                          job.title
+                            .toLowerCase() // Convert to lowercase
+                            .replace(/\s+/g, " ") // Remove extra spaces
+                            .trim() // Remove leading/trailing spaces
+                            .replace(/\b\w/g, (char) => char.toUpperCase()) // Capitalize first letter of each word
+                        }
                       </Typography>
-                      <Typography variant="h6" gutterBottom>
+                      <Typography variant="h6">
                         {job.company.companyName}
                       </Typography>
-                      <Typography variant="body1" color="textSecondary">
-                        {job.location}
+                      <Typography gutterBottom>{job.location
+                        .toLowerCase() // Convert to lowercase
+                        .replace(/\s+/g, " ") // Remove extra spaces
+                        .trim() // Remove leading/trailing spaces
+                        .replace(/\b\w/g, (char) => char.toUpperCase()) }</Typography>
+                      <Typography
+                        variant="body1"
+                        color="textSecondary"
+                        sx={{
+                          display: "-webkit-box",
+                          WebkitBoxOrient: "vertical",
+                          WebkitLineClamp: 3,
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                        }}
+                      >
+                        {job.description}
                       </Typography>
-                      <Typography variant="body1" color="textSecondary">
-                        {job.salary}
-                      </Typography>
+                      <Box
+                        sx={{
+                          display: "flex",
+                          gap: "5px",
+                          marginTop: "auto",
+                          flexWrap: "wrap",
+                        }}
+                      >
+                        <Button
+                          variant="outlined"
+                          sx={{
+                            padding: "4px 8px",
+                            fontSize: "12px",
+                            fontWeight: "bold",
+                            minWidth: "auto",
+                          }}
+                        >
+                          {job.position} positions
+                        </Button>
+                        <Button
+                          variant="outlined"
+                          sx={{
+                            color: "#bf130a",
+                            borderColor: "#bf130a",
+                            padding: "4px 8px",
+                            fontSize: "12px",
+                            fontWeight: "bold",
+                            minWidth: "auto",
+                          }}
+                        >
+                          {job.employementType}
+                        </Button>
+                        <Button
+                          variant="outlined"
+                          sx={{
+                            color: "#2f0b78",
+                            borderColor: "#2f0b78",
+                            padding: "4px 8px",
+                            fontSize: "12px",
+                            fontWeight: "bold",
+                            minWidth: "auto",
+                          }}
+                        >
+                          {job.salary}
+                        </Button>
+                      </Box>
                     </CardContent>
                   </Card>
                 </Grid>
